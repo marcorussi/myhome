@@ -9,21 +9,21 @@ Data received from the subscribed topic are sent through UART2 while data receiv
 
 Data received from UART are in JSON format as array of key and value fields: See the following example:
 
-'''javascript
+```
 {"pubkey1","pubvalue1"},{"pubkey2":"pubvalue2"},{"pubkey3":"pubvalue3"}
-'''
+```
 
 These data are encapsulated as a JSON value field and then the resulting string is sent to the topic (publish) as above. See the example string below:
 
-'''javascript
+```
 {"monitor":[{"pubkey1","pubvalue1"},{"pubkey2":"pubvalue2"},{"pubkey3":"pubvalue3"}]}
-'''
+```
 
 Similarly, data received from the subscribed topic, in JSON format, are encapsulated and then the resulting string is sent through UART. See the example string below:
 
-'''javascript
+```
 {"command":[{"subkey1","subvalue1"},{"subkey2":"subvalue2"},{"subkey3":"subvalue3"}]}
-'''
+```
 
 Two special messages are sent to the UART channel to notify when device is connected to AWS and subscribed to the topic and in case of a disconnection or error event.
 This messages are respectively
@@ -33,10 +33,11 @@ This messages are respectively
 # Configuration
 
 Clone this repository. Remember to export the IDF_PATH and add the location of the esp32 compiler to the environment PATH.
-'''
+
+```
 export PATH=$PATH:[your_directory]
 export IDF_PATH=[your_directory]
-'''
+```
 
 Then configure necessary parameters as any other example of the SDK
 
