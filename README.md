@@ -1,7 +1,7 @@
 # myhome
 
 This simple application for ESP32 acts as a gateway between a UART channel and a MQTT publish/suscribe client over AWS IoT service. 
-This program is derived from examples in the esp-idf SDK. The version used for this program is esp-idf v2.1.
+This program is derived from examples in the esp-idf SDK. The version used for this program is esp-idf v2.1 (https://github.com/espressif/esp-idf).
 
 Data received from the subscribed topic are sent through UART2 while data received from UART2 are published to another topic. These topics are listed here below:
 * subscribe: myhome/command
