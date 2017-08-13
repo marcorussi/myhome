@@ -197,9 +197,10 @@ void iot_subscribe_callback_handler(AWS_IoT_Client *pClient, char *topicName, ui
 	/* TODO: check payload length! */
 
 	memcpy(payload_string, (char *)params->payload, (int)params->payloadLen);
-	payload_string[((int)params->payloadLen-1)] = '\0';
+	payload_string[((int)params->payloadLen)] = '\0';
 	/* prepare JSON data string */
-	sprintf(uart_data_out, "{\"command\":[%s]}", payload_string);
+	/* ATTENTION: the last character '.' is a special termination character for thread client board */
+	sprintf(uart_data_out, "{\"command\":[%s]}.", payload_string);
 	/* send data through UART */
 	uart_write_bytes(DATA_UART_NUM, (const char*)uart_data_out, strlen(uart_data_out));
 }
